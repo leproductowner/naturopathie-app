@@ -3,10 +3,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-# Charger le modèle Qwen
-model_name = "Qwen/Qwen-7B"  # Remplacez par le modèle Qwen que vous souhaitez utiliser
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+# Charger le modèle Qwen avec trust_remote_code=True
+model_name = "Qwen/Qwen-1.8B"  # Utilisez un modèle plus petit pour Streamlit Sharing
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
 
 # Fonction pour générer le bilan naturopathique
 def generer_bilan(sexe, age, etat_civil, occupation, stress_travail, 
